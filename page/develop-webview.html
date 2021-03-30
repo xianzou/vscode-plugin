@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/mini-default.min.css">
+	<style>
+		html {
+			font-size: 14px;
+		}
+		.col-sm-12.col-md-3{
+			text-align: right;
+		}
+		* {
+			outline: none;
+		}
+		.row.responsive-label +.row.responsive-label{
+			margin-top: 8px;
+		}
+		.col-md-1 label{
+			cursor: pointer;
+		}
+		/* 浅色主题 */
+		body.vscode-light {
+			background: white;
+			color: black;
+		}
+		/* 深色主题 */
+		body.vscode-dark {
+			background: #252526;
+			color: white;
+		}
+		/* 高对比度主题 */
+		body.vscode-high-contrast {
+			background: white;
+			color: red;
+		}
+		fieldset{
+			border:none !important;
+		}
+		.mt-40{
+			margin-top: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="section mt-40">
+			<fieldset>
+				<div class="row responsive-label">
+					<div class="col-sm-12 col-md-3">
+						<label for="sf1-text" class="doc">区块名称</label>
+					</div>
+					<div class="col-sm-12 col-md">
+						<input type="text"  id="blockName" style="width:85%;" class="doc" placeholder="请输入区块名称(示例：TitleHeadShow)">
+					</div>
+				</div>
+				<div class="row responsive-label">
+					<div class="col-sm-12 col-md-3">
+						<label for="sf1-pwd" class="doc">区块标题</label>
+					</div>
+					<div class="col-sm-12 col-md">
+						<input type="text"  id="title" placeholder="请输入区块标题(示例：企业头部信息展示)"
+							style="width:85%;" class="doc">
+						</div>
+				</div>
+				<div class="row responsive-label">
+					<div class="col-sm-12 col-md-3">
+						<label for="sf1-num" class="doc">区块描述</label>
+					</div>
+					<div class="col-sm-12 col-md">
+							<textarea class="doc" id="description" style="width:85%;" placeholder="请输入区块描述(示例：用于企业头部信息展示)"
+							placeholder="Textarea"></textarea>
+						</div>
+				</div>
+				<div class="row responsive-label">
+					<div class="col-sm-12 col-md-3">
+						<label for="sf1-num" class="doc">作者姓名</label>
+					</div>
+					<div class="col-sm-12 col-md">
+						<input type="text"  id="author" style="width:85%;" placeholder="请输入你的姓名(示例：lijq)"
+							class="doc">
+						</div>
+				</div>
+				<div class="row responsive-label">
+					<div class="col-sm-12 col-md-3"><label for="sf1-select" class="doc">请选择分类</label></div>
+					<div class="col-sm-12 col-md">
+						<select  style="width:85%;" class="doc" id="categorieList">
+							<option class="doc">pc</option>
+							<option class="doc">移动端</option>
+							<option class="doc">jquery</option>
+						</select></div>
+				</div>
+				<div class="row responsive-label">
+					<div class="col-sm-12 col-md-3"><label for="sf1-select" class="doc">请选择业务线</label></div>
+					<div class="col-sm-12 col-md">
+						<select  style="width:85%;" class="doc" id="businessLines">
+							<option class="doc">公共物料库</option>
+							<option class="doc">教育业务线</option>
+							<option class="doc">信用业务线</option>
+							<option class="doc">社区业务线</option>
+							<option class="doc">协同业务线</option>
+						</select>
+					</div>
+				</div>
+				<div class="row responsive-label">
+					<div class="col-sm-12 col-md-3">
+						<label for="sf1-check" class="doc">请选择标签</label>
+					</div>
+					
+					<div class=" col-md-1">
+						<input type="checkbox" id="drawer-control1"  autocomplete="off" class="doc">
+						<label for="drawer-control1">信息展示</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control2"  autocomplete="off" class="doc">
+						<label for="drawer-control2">欢迎页</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control3"  autocomplete="off" class="doc">
+						<label for="drawer-control3">列表</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control4"  autocomplete="off" class="doc">
+						<label for="drawer-control4">图表</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control5"  autocomplete="off" class="doc">
+						<label for="drawer-control5">表格</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control6"  autocomplete="off" class="doc">
+						<label for="drawer-control6">异常</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control7"  autocomplete="off" class="doc">
+						<label for="drawer-control7">数据展示</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control8"  autocomplete="off" class="doc">
+						<label for="drawer-control8">表单</label>
+					</div>
+					
+					
+				</div>
+				<div class="row responsive-label">
+					<div class="col-sm-12 col-md-3">
+						<label for="sf1-check" class="doc"></label>
+					</div>
+					<div class="col-md-1" style="padding-left: 0 !important;">
+						<input type="checkbox" id="drawer-control9"  autocomplete="off" class="doc">
+						<label for="drawer-control9">模态框</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control10"  autocomplete="off" class="doc">
+						<label for="drawer-control10">筛选</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control11"  autocomplete="off" class="doc">
+						<label for="drawer-control11">登录页</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control12"  autocomplete="off" class="doc">
+						<label for="drawer-control12">注册页</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control13"  autocomplete="off" class="doc">
+						<label for="drawer-control13">页脚</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" id="drawer-control14"  autocomplete="off" class="doc">
+						<label for="drawer-control14">其他</label>
+					</div>
+					
+				</div>
+				<br />
+				<div class="row responsive-label" id="error-tip" style="display: none;">
+					<div class="col-sm-12 col-md-3">
+						<label for="sf1-check" class="doc"> </label>
+					</div>
+					<p>
+						<mark class="inline-block secondary" id="error-text">请完整填写表单</mark>
+					</p>
+				</div>
+				<br />
+				<div class="row responsive-label">
+					<div class="col-sm-12 col-md-3">
+						<label for="sf1-check" class="doc"></label>
+					</div>
+					<button class="primary" onclick="submit()">创建区块</button>
+				</div>
+				
+			</fieldset>
+	</div>
+</body>
+<script  type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+
+	function showError(type){
+		if(!type){
+			document.querySelector("#error-tip").style.display = 'none';
+			return false;
+		}
+		const errorMap = {
+			blockName:'请填写区块名称',
+			title:'请填写区块标题',
+			description:'请填写区块描述',
+			author:'请填写作者姓名',
+			categorieList:'请选择分类',
+			businessLines:'请选择业务线',
+			tagList:'请选择标签',
+		}
+		document.querySelector("#error-text").innerText = errorMap[type] || '请完整填写表单';
+		document.querySelector("#error-tip").style.display = 'flex';
+	}
+
+	function submit(){
+		// showError();
+		let blockName = '',title='',description = '',author='',categorieList = [],businessLines = [],tagList = [];
+		blockName = document.querySelector("#blockName").value;
+		title = document.querySelector("#title").value;
+		description = document.querySelector("#description").value;
+		author = document.querySelector("#author").value;
+		categorieList = document.querySelector("#categorieList").value;
+		businessLines = document.querySelector("#businessLines").value;
+		//循环获取tagList
+		for (let i = 1;i<=14;i++){
+			const checkBoxNode = document.querySelector(`#drawer-control${i}`);
+			if(checkBoxNode.checked){
+				tagList.push(checkBoxNode.nextElementSibling.innerText)
+			}
+		}
+		//校验
+		if(!blockName){
+			showError('blockName');
+			return false;
+		}
+		if(!title){
+			showError('title');
+			return false;
+		}
+		if(!description){
+			showError('description');
+			return false;
+		}
+		if(!author){
+			showError('author');
+			return false;
+		}
+		if(!categorieList.length){
+			showError('categorieList');
+			return false;
+		}
+		if(!businessLines.length){
+			showError('businessLines');
+			return false;
+		}
+		if(!tagList.length){
+			showError('tagList');
+			return false;
+		}
+		showError();//关闭错误提示
+		const option = {
+			blockName,
+			title,
+			description,
+			author,
+			categorieList,
+			businessLines,
+			tagList
+		}
+		createBlock(option);
+	}
+	
+	function createBlock(option) {
+		callVscode({ cmd: 'createBlock', body: option }, (message) => {
+			console.log(message);
+		});
+	}
+</script>
+
+</html>

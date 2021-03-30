@@ -1,0 +1,35 @@
+{
+	"ProTable": {
+		"prefix": "pt-",
+        "scope": "javascript,typescriptreact",
+		"body": "import React, { Fragment }  from 'react';\r\nimport {\r\n    ProTable, usePT, Caption, Action,\r\n    Form, Input, FormItem,\r\n    Table, Column, ActionColumn\r\n} from '@share/pro-table';\r\n\r\nconst $TM_FILENAME_BASE = () => {\r\n    const pt = usePT({\r\n        initData: { name: '', company: '' },\r\n        dataSource: []\r\n    });\r\n\r\n    return (\r\n        <ProTable {...pt}>\r\n            <Form>\r\n                <Input label=\"\" field=\"\" />\r\n                <FormItem>\r\n                    <Action.Query />\r\n                    <Action.Reset />\r\n                </FormItem>\r\n            </Form>\r\n            <Caption>\r\n                <Caption.Title>标题</Caption.Title>\r\n                <Caption.Description>描述</Caption.Description>\r\n                <Caption.Extra>\r\n                    <Action.Button to=\"/add\">新增用户</Action.Button>\r\n                </Caption.Extra>\r\n            </Caption>\r\n            <Table>\r\n                <Column label=\"\" field=\"\" />\r\n                <ActionColumn>\r\n                    {(_, row) => (\r\n                        <Fragment>\r\n                            <Action to={`/edit?id=${row.id}`}>编辑</Action>\r\n                            <Action confirm onClick={() => row.id}>删除</Action>\r\n                        </Fragment>\r\n                    )}\r\n                </ActionColumn>\r\n            </Table>\r\n        </ProTable>\r\n    );\r\n};\r\n\r\nexport default $TM_FILENAME_BASE;\r\n",
+		"description": "快速生成ProTable的代码片段"
+    },
+    "ProTable Modal Component":{
+        "scope": "javascript,typescriptreact",
+        "prefix": "ptmc-",
+        "body": "import React, { useEffect } from 'react';\r\nimport { Modal, Button } from '@share/shareui';\r\nimport { getComponents, createForm } from '@share/shareui-form';\r\n\r\nconst { Form, Row, Input } = getComponents('table');\r\n\r\nexport default createForm({\r\n    $1\r\n})(({ data, form, onClose, onConfirm }) => {\r\n    const handleConfirm = async () => {\r\n        const rs = await form.valid();\r\n\r\n        if (rs.every(v => v === true)) {\r\n            onConfirm(form.getFormData());\r\n        }\r\n    };\r\n\r\n    useEffect(() => {\r\n        data && form.setFieldValues(data);\r\n    }, []); // eslint-disable-line\r\n\r\n    return (\r\n        <Modal show onHide={onClose} backdrop=\"static\">\r\n            <Modal.Header closeButton>\r\n                <Modal.Title>{data ? '编辑' : '新增'}$2</Modal.Title>\r\n            </Modal.Header>\r\n            <Modal.Body full>\r\n                <Form formState={form}>\r\n                    <Row>\r\n                        <Input label=\"\" field=\"\" />\r\n                    </Row>\r\n                </Form>\r\n            </Modal.Body>\r\n            <Modal.Footer style={{ borderTop: 'none' }}>\r\n                <Button bsStyle=\"primary\" onClick={handleConfirm}>保存</Button>\r\n                <Button onClick={onClose}>取消</Button>\r\n            </Modal.Footer>\r\n        </Modal>\r\n    );\r\n});\r\n",
+        "description": "快速生成ProTable Modal Component的代码片段"
+    },
+    "create function component": {
+        "prefix": "cfc",
+        "scope": "javascript,typescriptreact",
+        "body": [
+            "import styles from './$TM_FILENAME_BASE.scss';",
+            "import React from 'react';",
+            "",
+            "const $TM_FILENAME_BASE = () => {",
+            "",
+            "    return (",
+            "        <div className={styles.${TM_FILENAME_BASE:/capitalize}}>",
+            "          $1  ",
+            "        </div>",
+            "    );",
+            " };",
+            "",
+            "",
+            " export default $TM_FILENAME_BASE;"
+        ],
+        "description": "快速生成符合公司规范的react函数式组件"
+    }
+}

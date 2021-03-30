@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/mini-default.min.css">
+	<style>
+		html {
+			font-size: 14px;
+		}
+		.col-sm-12.col-md-3{
+			text-align: right;
+		}
+		* {
+			outline: none;
+		}
+		.row.responsive-label +.row.responsive-label{
+			margin-top: 8px;
+		}
+		.col-md-1 label{
+			cursor: pointer;
+		}
+		/* 浅色主题 */
+		body.vscode-light {
+			background: white;
+			color: black;
+		}
+		/* 深色主题 */
+		body.vscode-dark {
+			background: #252526;
+			color: white;
+		}
+		/* 高对比度主题 */
+		body.vscode-high-contrast {
+			background: white;
+			color: red;
+		}
+		fieldset{
+			border:none !important;
+		}
+		.mt-40{
+			margin-top: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="section mt-40">
+		<div class="row" id="cardList">
+			<!-- <div class="card">
+				<div class="section">
+					<h3 class="doc">Card with image</h3>
+				</div>
+				<img class="section media" src="https://placehold.it/800x600" alt="placeholder">
+			</div> -->
+		</div>
+	</div>
+	<script  type="text/javascript" src="js/common.js"></script>
+	<script>
+		window.onload=function(){
+			callVscode({ cmd: 'getBlockData' }, (message) => {
+				//生成dom
+				let nodes = '';
+				message.forEach(row => {
+					nodes+= `<div class="card">
+						<div class="section">
+							<h3 class="doc">${row.title}</h3>
+						</div>
+						<img class="section media" src="${row.screenshot}" alt="${row.description}">
+						<div class="section" style="text-align: center">
+							<button class="small primary preview-btn" onClick="preview(this)" categorie="${row.categorie}" homePage="${row.homepage}">预览</button>
+							<button class="small tertiary" onClick="installBlock(this)">安装</button>
+						</div>
+					</div>`;
+				});
+				document.querySelector("#cardList").innerHTML = nodes;
+				
+			});
+		}
+		//预览
+		function preview(body){
+			const homePage = body.getAttribute('homePage');
+			const categorie = body.getAttribute('categorie');
+			callVscode({ cmd: 'previewBlock', body: {homePage,categorie} }, (message) => {
+				console.log(message);
+			});
+		}
+		//安装依赖
+		function installBlock(){
+			callVscode({ cmd: 'installBlock', body: {} }, (message) => {
+				console.log(message);
+			});
+		}
+		
+	 </script>
+</body>
+
+
+</html>

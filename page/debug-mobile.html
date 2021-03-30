@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/pure-min.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<style>
+		html {
+			font-size: 14px;
+		}
+        body{
+            width: 1024px;
+            margin: 0 auto;
+            background: white;
+        }
+		/* 浅色主题 */
+		/* body.vscode-light {
+			background: white;
+			color: black;
+		} */
+		/* 深色主题 */
+		/* body.vscode-dark {
+			background: #252526;
+			color: white;
+		} */
+		/* 高对比度主题 */
+		/* body.vscode-high-contrast {
+			background: white;
+			color: red;
+		} */
+        .main{
+            color: #777;
+        }
+        .content p{
+            font-size: 16px;
+        }
+        .button-xlarge {
+            font-size: 125%;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            background: rgb(28, 184, 65); /* this is a green */
+            margin-top: 32px;
+            margin-bottom: -16px;
+            margin-left: 110px;
+            color: #fff;
+        }
+        .button-error{
+          background: rgb(202, 60, 60);
+        }
+	</style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>本机远程调试手机页面</h1>
+            <h2 style="color:#888">一站式页面调试、抓包工具。远程调试任何手机浏览器页面，任何手机移动端webview（如：微信，HybridApp等）。支持HTTP/HTTPS，无需USB连接设备</h2>
+        </div>
+        <div>
+            <button class="pure-button  button-xlarge" onclick="start()">启动调试工具程序</button>
+        </div>
+        <div>
+          <button class="pure-button button-xlarge button-error" onclick="end()">结束调试工具程序</button>
+      </div>
+        <div class="content">
+            
+              <h2 class="content-subhead">如何使用</h2>
+              <p>
+                第一步：手机和PC保持在同一网络下（比如同时连到一个Wi-Fi下）
+              </p>
+              <p>
+                第二步：点击启动程序。 
+                <!-- 第二步：命令行输入spy-debugger，按命令行提示用浏览器打开相应地址。 -->
+              </p>
+              <p>
+                第三步：设置手机的HTTP代理，代理IP地址设置为PC的IP地址，端口为默认端口：9888。
+                <div>
+                    -- Android设置代理步骤：设置 - WLAN - 长按选中网络 - 修改网络 - 高级 - 代理设置 - 手动
+                </div>
+                <div>
+                    -- iOS设置代理步骤：设置 - 无线局域网 - 选中网络 - HTTP代理手动
+                </div>
+              </p>
+              <p>
+                第四步：手机安装证书;手机首次调试需要安装证书，已安装了证书的手机无需重复安装)。iOS新安装的证书需要手动打开证书信任
+                <br />
+                <br />
+                <img src="https://camo.githubusercontent.com/fc024b1b880c605d413842e24d9d9df2f431f8cfeb82d81710e3870c52fdf5bf/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f7869616e7a6f752f7374617469635f66696c6573406d61737465722f696d616765732f313536373530303131363539302d34623362373061302d663566372d346239332d393863662d3430383630393530636532652e706e67" alt="" />
+              </p>
+              <p>
+                第五步：用手机浏览器访问你要调试的页面即可。
+              </p>
+              <h2 class="content-subhead">特性</h2>
+            <p>
+              1、页面调试＋抓包
+            </p>
+            <p>
+                2、操作简单，无需USB连接设备
+              </p>
+              <p>
+                3、支持HTTPS
+              </p>
+              <p>
+                4、内部集成了weinre、node-mitmproxy、AnyProxy
+              </p>
+              <p>
+                5、自动忽略原生App发起的https请求，只拦截webview发起的https请求。对使用了SSL pinning技术的原生App不造成任何影响
+              </p>
+              <p>
+                6、可以配合其它代理工具一起使用(默认使用AnyProxy) 
+              </p>
+              <h2 class="content-subhead">关于IOS常见问题</h2>
+              <p>
+                一、无法显示二维码
+              </p>
+              <p>
+                1、先点击启动调试程序后的网页，用相机扫描所给的二维码，并用safari浏览器打开；
+              </p>
+              <p>
+                2、修改safari打开后的url链接，把127.0.0.1改成本机的ip
+              </p>
+              <p>
+                3、可以正常显示证书下载页面；
+              </p>
+              <p>
+                二、非私人链接提示
+              </p>
+              <p>
+                如果按教程来，进行到最后，仍会有如下的提示:
+                <br />
+                <br />
+                <img src="https://camo.githubusercontent.com/773006f3dd0f56a4c75acbbfd22d4cd318d7aa54af05b8db2870c5c4dfc01a21/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f7869616e7a6f752f7374617469635f66696c6573406d61737465722f696d616765732f313536373439353930373835362d31366161633132622d663064612d346236392d393236632d3633663238393266363139312e6a706567" alt="" />
+              </p>
+              <p>
+                这是因为没有下载的证书完全信任导致。
+              </p>
+              <p>
+                解决方法：通用 => 关于本机 => 证书信任设置 ，然后选择对应的证书信任即可。
+              </p>
+              <h2 class="content-subhead">自定义选项</h2>
+              <p>
+                -下一阶段计划-
+              </p>
+
+              <p>
+                设置外部代理
+              </p>
+              <h2 class="content-subhead">关于spy-debugger</h2>
+              <p>
+                一站式页面调试、抓包工具。远程调试任何手机浏览器页面，任何手机移动端webview（如：微信，HybridApp等）。支持HTTP/HTTPS，无需USB连接设备
+              </p>
+              <p>
+                  地址：https://github.com/xianzou/spy-debugger
+              </p>
+        </div>
+    </div>
+	
+</body>
+<script  type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+    function start (){
+      callVscode({ cmd: 'openDebug', body: {} }, (message) => {});
+    }
+    function end(){
+      callVscode({ cmd: 'closeDebug', body: {} }, (message) => {});
+    }
+	
+</script>
+
+</html>

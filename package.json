@@ -1,0 +1,105 @@
+{
+	"name": "share-develop-helper",
+	"displayName": "share-develop-helper",
+	"description": "畅享信息开发小助手",
+	"version": "1.0.4",
+	"engines": {
+		"vscode": "^1.48.0"
+	},
+	"publisher": "share-develop-helper",
+	"categories": [
+		"Extension Packs",
+		"Visualization",
+		"Snippets"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"menus": {
+			"editor/context": [
+				{
+					"when": "resourceLangId == javascript",
+					"command": "share.openShareuiPreviewWebview",
+					"alt": "share.openUseBlockWebview",
+					"group": "navigation"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "share_id",
+					"title": "畅享开发小助手",
+					"icon": "images/icon.svg"
+				}
+			]
+		},
+		"views": {
+			"share_id": [
+				{
+					"id": "SHARE_ID",
+					"name": "功能列表"
+				}
+			]
+		},
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./snippets.json"
+			}
+		],
+		"commands": [
+			{
+				"command": "share.openAddBlockWebview",
+				"title": "share-add-block"
+			},
+			{
+				"command": "share.openUseBlockWebview",
+				"title": "share-use-block"
+			},
+			{
+				"command": "share.openPreviewWebview",
+				"title": "share-open-preview"
+			},
+			{
+				"command": "share.openShareuiPreviewWebview",
+				"title": "shareui-doc在线文档"
+			},
+			{
+				"command": "share.debugg-mobile",
+				"title": "本机远程调试手机页面"
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js",
+		"vscode:prepublish": "webpack --mode production",
+		"build": "webpack --mode none",
+		"watch": "webpack --mode none --watch"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^14.0.27",
+		"@types/vscode": "^1.48.0",
+		"copy-webpack-plugin": "^6.1.0",
+		"eslint": "^7.6.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.0.1",
+		"ts-loader": "^8.0.3",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.4.0",
+		"webpack": "^4.44.1",
+		"webpack-cli": "^3.3.12"
+	},
+	"dependencies": {
+		"format-json-pretty": "^1.0.1",
+		"request-light": "^0.4.0",
+		"shelljs": "^0.8.4",
+		"yargs": "^15.4.1"
+	}
+}
