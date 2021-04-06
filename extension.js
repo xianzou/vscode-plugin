@@ -7,12 +7,10 @@
  * @Last Modified by: 李家其
  * @Last Modified time: 2020-09-08 17:41:24
  */
-
-const vscode = require('vscode');
 const CourseTreeProvider = require("./src/CourseTreeProvider");
 const registerCommands = require("./src/commands");
-const path = require('path');
-const fs = require('fs');
+const checkBug = require('./src/checkBug');
+
 const {
 	createAddBlockWebview, createUseBlockWebView,
 	createPreviewWebView, createShareUiPreviewWebView,createdebugMobileWebview
@@ -20,7 +18,7 @@ const {
 
 function activate(context) {
 	CourseTreeProvider.MyTreeProvider.initMyTreeList();
-	vscode.window.setStatusBarMessage('你好，畅享信息的前端艺术家！');
+	// vscode.window.setStatusBarMessage('你好，畅享信息的前端艺术家！');
 
 	const globalState = {
 		addBlockPanel: null,
@@ -30,7 +28,7 @@ function activate(context) {
 		shareuiPanel: null,
 		currComponentName: ''
 	};
-
+	checkBug.checkBug(context);
 	//新增block命令
 	context.subscriptions.push(registerCommands.openAddBlock(context, globalState, createAddBlockWebview));
 	//使用block命令
@@ -43,7 +41,6 @@ function activate(context) {
 	context.subscriptions.push(registerCommands.openDebuggMobile(context, globalState, createdebugMobileWebview));
 
 }
-exports.activate = activate;
 
 // this method is called when your extension is deactivated
 function deactivate(context) {
