@@ -2,7 +2,7 @@
 	"name": "share-develop-helper",
 	"displayName": "share-develop-helper",
 	"description": "畅享信息开发小助手",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"engines": {
 		"vscode": "^1.48.0"
 	},
