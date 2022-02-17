@@ -7,7 +7,7 @@
  * @Last Modified by: 李家其
  * @Last Modified time: 2020-09-08 17:41:24
  */
-const CourseTreeProvider = require("./src/CourseTreeProvider");
+const {treeInit} = require('./src/tree');
 const registerCommands = require("./src/commands");
 const checkBug = require('./src/checkBug');
 
@@ -16,10 +16,13 @@ const {
 	createPreviewWebView, createShareUiPreviewWebView,createdebugMobileWebview
 } = require("./src/createWebview");
 
-function activate(context) {
-	CourseTreeProvider.MyTreeProvider.initMyTreeList();
-	// vscode.window.setStatusBarMessage('你好，畅享信息的前端艺术家！');
+const {
+	createFunComponents
+} = require("./src/createFunComponents");
 
+
+function activate(context) {
+	treeInit();
 	const globalState = {
 		addBlockPanel: null,
 		useBlockPanel: null,
@@ -29,6 +32,11 @@ function activate(context) {
 		currComponentName: ''
 	};
 	checkBug.checkBug(context);
+
+	const cfc = createFunComponents();
+
+	context.subscriptions.push(cfc);
+
 	//新增block命令
 	context.subscriptions.push(registerCommands.openAddBlock(context, globalState, createAddBlockWebview));
 	//使用block命令

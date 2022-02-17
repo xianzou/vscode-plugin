@@ -49,6 +49,9 @@
         .button-error{
           background: rgb(202, 60, 60);
         }
+        .button-blue{
+          background: #1976d2;
+        }
 	</style>
 </head>
 
@@ -59,20 +62,33 @@
             <h2 style="color:#888">一站式页面调试、抓包工具。远程调试任何手机浏览器页面，任何手机移动端webview（如：微信，HybridApp等）。支持HTTP/HTTPS，无需USB连接设备</h2>
         </div>
         <div>
-            <button class="pure-button  button-xlarge" onclick="start()">启动调试工具程序</button>
+            <button class="pure-button  button-xlarge" onclick="start()">启动HTTP调试工具</button>
         </div>
         <div>
-          <button class="pure-button button-xlarge button-error" onclick="end()">结束调试工具程序</button>
-      </div>
+          <button class="pure-button button-xlarge button-blue" onclick="start('https')">启动HTTPS调试工具</button>
+        </div>
+        <div>
+          <button class="pure-button button-xlarge button-error" onclick="end()">结束调试工具</button>
+        </div>
+        
+
         <div class="content">
-            
+            <h2 class="content-subhead">调试https网页说明</h2>
+            <div>
+                <p>点击【启动HTTP调试工具程序】按钮</p>
+                <p>启动后会在 C:\Users\Administrator\node-mitmproxy 下生成一个证书文件，把证书文件导入手机安装</p>
+                <img src="https://cdn.jsdelivr.net/gh/xianzou/static_files@master/images/ccc.png" alt=""/>
+                <p>手机安装完后设置网络代理即可</p>
+                <p>打开 HTTPS 的页面，后续如果还需要调试https网页就可直接点击【启动调试工具程序】</p>
+                <p>HTTP调试不需要这一步骤（不需要安装证书）</p>
+            </div>
+
               <h2 class="content-subhead">如何使用</h2>
               <p>
                 第一步：手机和PC保持在同一网络下（比如同时连到一个Wi-Fi下）
               </p>
               <p>
                 第二步：点击启动程序。 
-                <!-- 第二步：命令行输入spy-debugger，按命令行提示用浏览器打开相应地址。 -->
               </p>
               <p>
                 第三步：设置手机的HTTP代理，代理IP地址设置为PC的IP地址，端口为默认端口：9888。
@@ -84,7 +100,7 @@
                 </div>
               </p>
               <p>
-                第四步：手机安装证书;手机首次调试需要安装证书，已安装了证书的手机无需重复安装)。iOS新安装的证书需要手动打开证书信任
+                第四步：手机安装证书;手机首次调试HTTPS需要安装证书，已安装了证书的手机无需重复安装)。iOS新安装的证书需要手动打开证书信任
                 <br />
                 <br />
                 <img src="https://camo.githubusercontent.com/fc024b1b880c605d413842e24d9d9df2f431f8cfeb82d81710e3870c52fdf5bf/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f7869616e7a6f752f7374617469635f66696c6573406d61737465722f696d616765732f313536373530303131363539302d34623362373061302d663566372d346239332d393863662d3430383630393530636532652e706e67" alt="" />
@@ -139,13 +155,12 @@
               <p>
                 解决方法：通用 => 关于本机 => 证书信任设置 ，然后选择对应的证书信任即可。
               </p>
-              <h2 class="content-subhead">自定义选项</h2>
+                
               <p>
-                -下一阶段计划-
+                四、其他问题
               </p>
-
               <p>
-                设置外部代理
+                地址：https://github.com/xianzou/spy-debugger
               </p>
               <h2 class="content-subhead">关于spy-debugger</h2>
               <p>
@@ -160,8 +175,8 @@
 </body>
 <script  type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript">
-    function start (){
-      callVscode({ cmd: 'openDebug', body: {} }, (message) => {});
+    function start (ishttp){
+      callVscode({ cmd: 'openDebug', body: {'https':ishttp||''} }, (message) => {});
     }
     function end(){
       callVscode({ cmd: 'closeDebug', body: {} }, (message) => {});

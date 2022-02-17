@@ -58,6 +58,7 @@ class newTreeItem extends vscode.TreeItem {
         super(label, collapsibleState);
         this.command = command;
     }
+    // @ts-ignore
     get tooltip() {
         return `${this.label}`;
     }

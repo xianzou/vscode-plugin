@@ -127,6 +127,10 @@ const util = {
         global.terminalA = vscode.window.createTerminal({ name: "远程调试" });
         global.terminalA.show(true);
         let str = 'spy-debugger';
+        //生成证书
+        if(body.https){
+            str = 'spy-debugger initCA'
+        }
         
         if (!shell.which(str)) {
             vscode.window.showInformationMessage('第一次运行需要安装依赖,成功后浏览器将自动打开调试页面，请稍后...')

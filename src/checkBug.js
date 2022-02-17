@@ -45,10 +45,11 @@ const rules = [{
     key:':',
     right:'：'
 },{
-    'desc':'匹配text，input',
-    rule: /<((input|textarea|textArea|Input|TextArea|TextareaItem|InputItem) .*?)>\w*?(<\/\1>)?/g,
-    key:'maxlength',
-    right:'maxlength'
+    'desc':'匹配textarea,input',
+    // rule: /<((input|textarea|textArea|Input|TextArea|TextareaItem|InputItem) .*?)>\w*?(<\/\1>)?/mg,
+    rule: /<((input|textarea|textArea|Input|TextArea|TextareaItem|InputItem) [\s\D]*?)>\w*?(<\/\1>)?/mg,
+    key:'maxLength',
+    right:'maxLength'
 }]
 
 const  checkBug = (context) => {
@@ -98,11 +99,11 @@ const  checkBug = (context) => {
                 //异常中文标点结束位置，这几个要检测的标点只占一个位置，加1即可
                 let endPos = activeEditor.document.positionAt(startIndex + 1);
                 let message= '';
-                if(row.key === 'maxlength' && codeIndex === -1){
+                if(row.key === 'maxLength' && codeIndex === -1){
                     endPos = activeEditor.document.positionAt(startIndex + row.text.length);
-                    message= `缺少maxlength属性，请排查是否为低级bug\n预期为：${row.right}`; //问题诊断面版展示的说明信息
+                    message= `缺少maxLength属性，请排查是否为低级bug\n预期为：${row.right}`; //问题诊断面版展示的说明信息
                 }
-                if(row.key !== 'maxlength'){
+                if(row.key !== 'maxLength'){
                     message= `疑似异常字符，请排查是否为低级bug\n预期为：${row.right}`;//问题诊断面版展示的说明信息
                 }
                 //异常中文标点的诊断信息，问题诊断面版要用到

@@ -2,7 +2,7 @@
 	"name": "share-develop-helper",
 	"displayName": "share-develop-helper",
 	"description": "畅享信息开发小助手",
-	"version": "1.0.6",
+	"version": "1.0.9",
 	"engines": {
 		"vscode": "^1.48.0"
 	},
@@ -13,7 +13,8 @@
 		"Snippets"
 	],
 	"activationEvents": [
-		"*"
+		"*",
+		"onCommand:extension.createFunctionalComponent"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -25,22 +26,33 @@
 					"alt": "share.openUseBlockWebview",
 					"group": "navigation"
 				}
-			]
+			],
+			"explorer/context": [
+                {
+					"when": "explorerResourceIsFolder",
+                    "command": "extension.createFunctionalComponent",
+                    "group": "1_modification"
+                }
+            ]
 		},
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "share_id",
+					"id": "share_develop_helper",
 					"title": "畅享开发小助手",
 					"icon": "images/icon.svg"
 				}
 			]
 		},
 		"views": {
-			"share_id": [
+			"share_develop_helper": [
 				{
-					"id": "SHARE_ID",
-					"name": "功能列表"
+					"id": "share_common_tool",
+					"name": "常用功能"
+				},
+				{
+					"id": "share_amoy_tool",
+					"name": "Amoy功能"
 				}
 			]
 		},
@@ -70,7 +82,11 @@
 			{
 				"command": "share.debugg-mobile",
 				"title": "本机远程调试手机页面"
-			}
+			},
+			{
+                "command": "extension.createFunctionalComponent",
+                "title": "创建React函数组件模板"
+            }
 		]
 	},
 	"scripts": {
